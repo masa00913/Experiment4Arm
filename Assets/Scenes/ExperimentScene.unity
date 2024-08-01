@@ -649,6 +649,24 @@ MonoBehaviour:
   - {fileID: 1657827884}
   - {fileID: 1559204808}
   - {fileID: 583621028}
+--- !u!114 &479881999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479881990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430fa3eb8a726c24aa3a5eb030c90b36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftArmTarget: {fileID: 566377111}
+  rightArmTarget: {fileID: 1705529123}
+  leftArmPos: {x: -0.15, y: 1.2, z: 0.44}
+  rightArmPos: {x: 0.15, y: 1.2, z: 0.44}
+  leftArmRot: {x: 0, y: 90, z: 90}
+  rightArmRot: {x: 0, y: -90, z: -90}
 --- !u!4 &482579862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8018759517328303977, guid: 4024c609a954ef5498c501fd32897d2c, type: 3}
@@ -1401,7 +1419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   port: 5005
   armController: {fileID: 479881994}
-  experimentManager: {fileID: 0}
+  experimentManager: {fileID: 523063649}
 --- !u!4 &1364714428 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3344125920599634994, guid: 4024c609a954ef5498c501fd32897d2c, type: 3}
@@ -2251,6 +2269,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8198983369718133494, guid: 4024c609a954ef5498c501fd32897d2c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 479881996}
+    - targetCorrespondingSourceObject: {fileID: 8198983369718133494, guid: 4024c609a954ef5498c501fd32897d2c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 479881999}
   m_SourcePrefab: {fileID: 100100000, guid: 4024c609a954ef5498c501fd32897d2c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -2260,5 +2281,5 @@ SceneRoots:
   - {fileID: 5940225920688084022}
   - {fileID: 1346194991}
   - {fileID: 1153917427}
-  - {fileID: 523063650}
   - {fileID: 133964038}
+  - {fileID: 523063650}
