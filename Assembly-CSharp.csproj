@@ -67,11 +67,8 @@
     <Compile Include="Assets\Scripts\ExperimentManager.cs" />
     <Compile Include="Assets\Scripts\UDPReceiver.cs" />
     <Compile Include="Assets\Scripts\ArmController.cs" />
-    <Compile Include="Assets\Scripts\OVRHeadsetEmulator.cs" />
     <Compile Include="Assets\Scripts\UDPSender.cs" />
     <Compile Include="Assets\Scripts\HandPos.cs" />
-    <Compile Include="Assets\Scripts\OVRManager.cs" />
-    <Compile Include="Assets\Scripts\OVRCameraRig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
