@@ -67,8 +67,11 @@
     <Compile Include="Assets\Scripts\ExperimentManager.cs" />
     <Compile Include="Assets\Scripts\UDPReceiver.cs" />
     <Compile Include="Assets\Scripts\ArmController.cs" />
+    <Compile Include="Assets\Scripts\OVRHeadsetEmulator.cs" />
     <Compile Include="Assets\Scripts\UDPSender.cs" />
     <Compile Include="Assets\Scripts\HandPos.cs" />
+    <Compile Include="Assets\Scripts\OVRManager.cs" />
+    <Compile Include="Assets\Scripts\OVRCameraRig.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -1035,12 +1038,12 @@
       <HintPath>Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
