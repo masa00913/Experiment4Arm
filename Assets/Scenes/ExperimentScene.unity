@@ -258,8 +258,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2f67af0caea554e82e1c32062ce6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isStart: 0
-  csvName: 
+  isExperiment: 0
+  csvName: Kasahara
   leftCircle: {fileID: 1828639808}
   rightCircle: {fileID: 519967639}
   leftTipObj: {fileID: 217439033}
@@ -441,7 +441,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -657,6 +657,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2832588773954995560, guid: 4024c609a954ef5498c501fd32897d2c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369915540859377149, guid: 4024c609a954ef5498c501fd32897d2c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259567118162812632, guid: 4024c609a954ef5498c501fd32897d2c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8198983369718133494, guid: 4024c609a954ef5498c501fd32897d2c, type: 3}
       propertyPath: m_Name
       value: Kairiki_animation_3Phase

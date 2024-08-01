@@ -45,7 +45,7 @@ public class ExperimentManager : MonoBehaviour
             //最初の処理
             startTime = Time.time;
             taskStartTime = Time.time;
-            armController.ResetArmPos();
+            //armController.ResetArmPos();
             Debug.Log("＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝実験開始＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
             isStart = true;
             isTask = true;
@@ -77,6 +77,12 @@ public class ExperimentManager : MonoBehaviour
                     Debug.Log("左のタスク完了");
                     isClearTask = true;
                     leftCircleSprite.color = Color.red;
+
+                    string[] rowDataTemp = new string[3];
+                    rowDataTemp[0] = "左";
+                    rowDataTemp[1] = (currentTaskNum + 1) + "回目";
+                    rowDataTemp[2] = (Time.time - taskStartTime).ToString();
+                    rowData.Add(rowDataTemp);
                 }
             }else if(taskOrder[currentTaskNum] == 2){
                 rightCircle.SetActive(true);
@@ -85,6 +91,12 @@ public class ExperimentManager : MonoBehaviour
                     Debug.Log("右のタスク完了");
                     isClearTask = true;
                     rightCircleSprite.color = Color.red;
+
+                    string[] rowDataTemp = new string[3];
+                    rowDataTemp[0] = "右";
+                    rowDataTemp[1] = (currentTaskNum + 1) + "回目";
+                    rowDataTemp[2] = (Time.time - taskStartTime).ToString();
+                    rowData.Add(rowDataTemp);
                 }
             }
 
@@ -93,14 +105,24 @@ public class ExperimentManager : MonoBehaviour
                 taskEndTime = Time.time;
 
                 var taskTime = Time.time - taskStartTime;
-                Debug.Log("タスクにかかった時間 " + taskTime);
+                Debug.Log((currentTaskNum + 1) + "回目：タスクにかかった時間 " + taskTime);
                 isTask = false;
                 
                 if(currentTaskNum >= taskOrder.Length-1){
                     Debug.Log("タスク終了");
                     var allTaskTime = Time.time - startTime;
                     Debug.Log("総実験時間 : " + allTaskTime);
+                    
+                    armController.ResetArmPos();
                     isExperiment = false;
+
+
+                    string[] rowDataTemp = new string[3];
+                    rowDataTemp[0] = "終了";
+                    rowDataTemp[1] = allTaskTime.ToString();
+                    rowData.Add(rowDataTemp);
+                    SaveToCSV();
+                    Debug.Log("CSVに保存完了");
                 }
             }
         }
@@ -109,7 +131,7 @@ public class ExperimentManager : MonoBehaviour
     public void SaveToCSV()
     {
         // 保存するファイルパス
-        string filePath = Application.dataPath + "/SavedData.csv";
+        string filePath = Application.dataPath + "/CSVs/" + csvName + ".csv";
 
         // ファイルストリームを作成
         StreamWriter outStream = File.CreateText(filePath);

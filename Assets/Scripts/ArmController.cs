@@ -19,7 +19,7 @@ public class ArmController : MonoBehaviour
     {
         animator.SetInteger("leftArmState",leftArmState);
         animator.SetInteger("rightArmState",rightArmState);
-        animator.SetBool("isReset",isReset);
+        //animator.SetBool("isReset",isReset);
     }
 
     public void LeftArmNext(){
@@ -48,5 +48,6 @@ public class ArmController : MonoBehaviour
 
     public void SetIsReset(bool isReset){
         this.isReset = isReset;
+        animator.SetBool("isReset",isReset);
     }
 }
