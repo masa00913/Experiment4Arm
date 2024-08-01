@@ -20,7 +20,7 @@ public class ExperimentManager : MonoBehaviour
 
     private float startTime;
     private float intervalTime = 1f;
-    private float armStayTime = 0.5f;
+    private float armStayTime = 0.25f;
     private float taskStartTime;
     private float taskEndTime;
     private bool isStart;
@@ -147,5 +147,9 @@ public class ExperimentManager : MonoBehaviour
         outStream.Close();
 
         Debug.Log("CSV file saved to: " + filePath);
+    }
+
+    public bool GetIsTask(){
+        return isTask;
     }
 }

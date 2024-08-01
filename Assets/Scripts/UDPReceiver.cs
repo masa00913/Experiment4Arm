@@ -11,6 +11,7 @@ public class UdpReceiver : MonoBehaviour
     private Thread receiveThread;
     public int port = 5005; // 受信側のポート番号
     [SerializeField]private ArmController armController;
+    [SerializeField]private ExperimentManager experimentManager;
 
     void Start()
     {
@@ -36,22 +37,26 @@ public class UdpReceiver : MonoBehaviour
                 // バイト配列を文字列に変換
                 string message = Encoding.UTF8.GetString(data);
                 Debug.Log("Message received: " + message);
-                switch (message)
-                {
-                    case "1":
-                        Debug.Log("左手");
-                        armController.LeftArmNext();
-                        break;
-                    case "2":
-                        Debug.Log("右手");
-                        armController.RightArmNext();
-                        break;
-                    case "3":
-                        Debug.Log("安静");
-                        break;
-                    default:
-                        Debug.Log("例外を検出");
-                        break;
+                if(experimentManager.GetIsTask()){
+                    switch (message)
+                    {
+                        case "1":
+                            Debug.Log("左手");
+                            armController.LeftArmNext();
+                            break;
+                        case "2":
+                            Debug.Log("右手");
+                            armController.RightArmNext();
+                            break;
+                        case "3":
+                            Debug.Log("安静");
+                            break;
+                        default:
+                            Debug.Log("例外を検出");
+                            break;
+                    }
+                }else{
+                    Debug.Log("タスク中ではありません");
                 }
             }
             catch (Exception e)

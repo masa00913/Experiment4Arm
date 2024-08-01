@@ -560,6 +560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   port: 5005
   armController: {fileID: 479881994}
+  experimentManager: {fileID: 0}
 --- !u!1 &1701127026 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5770517596657076945, guid: 4024c609a954ef5498c501fd32897d2c, type: 3}
