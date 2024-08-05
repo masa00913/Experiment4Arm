@@ -8,6 +8,8 @@ public class ArmController : MonoBehaviour
     private int leftArmState;
     private int rightArmState;
     private bool isReset;
+    private bool isLeft;
+    private bool isRight;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,8 @@ public class ArmController : MonoBehaviour
     {
         animator.SetInteger("leftArmState",leftArmState);
         animator.SetInteger("rightArmState",rightArmState);
+        animator.SetBool("isLeft",isLeft);
+        animator.SetBool("isRight",isRight);
     }
 
     public void LeftArmNext(){
@@ -48,5 +52,13 @@ public class ArmController : MonoBehaviour
     public void SetIsReset(bool isReset){
         this.isReset = isReset;
         animator.SetBool("isReset",isReset);
+    }
+
+    public void SetIsLeft(bool isLeft){
+        this.isLeft = isLeft; 
+    }
+
+    public void SetIsRight(bool isRight){
+        this.isRight = isRight;
     }
 }

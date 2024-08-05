@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\ExperimentManager.cs" />
     <Compile Include="Assets\Scripts\UDPReceiver.cs" />
     <Compile Include="Assets\Scripts\ArmController.cs" />
+    <Compile Include="Assets\Scripts\TrainingManager.cs" />
     <Compile Include="Assets\Scripts\UDPSender.cs" />
     <Compile Include="Assets\Scripts\HandPos.cs" />
   </ItemGroup>
