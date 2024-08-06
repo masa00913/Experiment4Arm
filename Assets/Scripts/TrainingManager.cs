@@ -111,7 +111,9 @@ public class TrainingManager : MonoBehaviour
                 }
             }else{
                 startTime = Time.time;
+                
                 trainingCount++;
+                Debug.Log(trainingCount + "回目終了");
                 if(trainingCount >= testOrder.Length){
                     isTraining = false;
                 }

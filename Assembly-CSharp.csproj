@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\TrainingManager.cs" />
     <Compile Include="Assets\Scripts\UDPSender.cs" />
     <Compile Include="Assets\Scripts\HandPos.cs" />
+    <Compile Include="Assets\Scripts\CameraManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
