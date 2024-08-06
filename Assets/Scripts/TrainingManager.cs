@@ -12,14 +12,20 @@ public class TrainingManager : MonoBehaviour
     [Header("安静の時間")]private float restTime = 2;
     [Header("指示の時間")]private float instituteTime = 1;
     [Header("合図の時間")]private float signTime = 1;
-    [Header("練習前の少しの時間")]private float preTrainingTime = 0.5f;
-    [Header("練習時間")]private float trainingTime = 2.5f;
+    [Header("練習前の少しの時間")]private float preTrainingTime = 1f;
+    [Header("練習時間")]private float trainingTime = 3f;
     private int trainingCount;
     [SerializeField]private GameObject trainingCanvas;
     [SerializeField]private GameObject crossObj;
     [SerializeField]private GameObject restObj;
     [SerializeField]private GameObject leftObj;
     [SerializeField]private GameObject rightObj;
+
+    [SerializeField]private UdpSender udpSender;
+
+    private bool isSend;
+
+    private string[] stimulateText = {"安静","左","右"};
     
     
     // Start is called before the first frame update
@@ -88,7 +94,11 @@ public class TrainingManager : MonoBehaviour
                 restObj.SetActive(false);
                 leftObj.SetActive(false);
                 rightObj.SetActive(false);
-
+                if(!isSend){
+                    udpSender.SendMessages(stimulateText[testOrder[trainingCount]] + "刺激開始");
+                    Debug.Log(stimulateText[testOrder[trainingCount]] + "刺激開始");
+                    isSend = true;
+                }
                 armController.SetIsReset(false);
                 if(elapsedTime > restTime + instituteTime + signTime + preTrainingTime){
                     switch (testOrder[trainingCount])
@@ -113,6 +123,7 @@ public class TrainingManager : MonoBehaviour
                 startTime = Time.time;
                 
                 trainingCount++;
+                isSend = false;
                 Debug.Log(trainingCount + "回目終了");
                 if(trainingCount >= testOrder.Length){
                     isTraining = false;

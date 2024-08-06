@@ -27,7 +27,7 @@ public class UdpSender : MonoBehaviour
         }
     }
 
-    void SendMessages(string message)
+    public void SendMessages(string message)
     {
         // 文字列をバイト配列に変換
         byte[] data = Encoding.UTF8.GetBytes(message);

@@ -1233,6 +1233,7 @@ MonoBehaviour:
   restObj: {fileID: 404417270}
   leftObj: {fileID: 1114175056}
   rightObj: {fileID: 1409570639}
+  udpSender: {fileID: 1153917426}
 --- !u!4 &719754653
 Transform:
   m_ObjectHideFlags: 0
@@ -1570,7 +1571,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1153917426
 MonoBehaviour:
   m_ObjectHideFlags: 0
