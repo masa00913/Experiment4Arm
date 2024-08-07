@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Experiment4Arm.sln"
+    "dotnet.defaultSolution": "Experiment4Arm.sln",
+    "dotnet.preferCSharpExtension": true
 }

@@ -20,7 +20,7 @@ public class ExperimentManager : MonoBehaviour
     [SerializeField]private GameObject rightTipObj;
     [SerializeField]private GameObject leftDownTipObj;
     [SerializeField]private GameObject rightDownTipObj;
-    [Header("タスクの順番 1:左 2:右")]private int[] taskOrder = {1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4};
+    [Header("タスクの順番 1:左上 2:右上, 3:左下 4:右下")]private int[] taskOrder = {1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4};
     [Header("現在のタスク番号")]private int currentTaskNum;
     [SerializeField]private ArmController armController;
 

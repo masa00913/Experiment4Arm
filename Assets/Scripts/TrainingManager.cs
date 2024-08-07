@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrainingManager : MonoBehaviour
 {
-    [Header("テストの順番 0:安静 1:左上 2:右上,3:左下,4:右下")]private int[] testOrder = {0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4};
+    [Header("テストの順番 1:安静 2:左上 3:右上,4:左下,5:右下")]private int[] testOrder = {1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5};
     [SerializeField]private bool isTraining;
     private bool isStart;
     [SerializeField]private ArmController armController;
@@ -67,7 +67,7 @@ public class TrainingManager : MonoBehaviour
                 crossObj.SetActive(false);
                 switch (testOrder[trainingCount])
                 {
-                    case 0:
+                    case 1:
                         //安静
                         restObj.SetActive(true);
                         leftUpObj.SetActive(false);
@@ -75,7 +75,7 @@ public class TrainingManager : MonoBehaviour
                         leftDownObj.SetActive(false);
                         rightDownObj.SetActive(false);
                         break;
-                    case 1:
+                    case 2:
                         //左上
                         restObj.SetActive(false);
                         leftUpObj.SetActive(true);
@@ -83,7 +83,7 @@ public class TrainingManager : MonoBehaviour
                         leftDownObj.SetActive(false);
                         rightDownObj.SetActive(false);
                         break;
-                    case 2:
+                    case 3:
                         //右上
                         restObj.SetActive(false);
                         leftUpObj.SetActive(false);
@@ -91,7 +91,7 @@ public class TrainingManager : MonoBehaviour
                         leftDownObj.SetActive(false);
                         rightDownObj.SetActive(false);
                         break;
-                    case 3:
+                    case 4:
                         //左下
                         restObj.SetActive(false);
                         leftUpObj.SetActive(false);
@@ -99,7 +99,7 @@ public class TrainingManager : MonoBehaviour
                         leftDownObj.SetActive(true);
                         rightDownObj.SetActive(false);
                         break;
-                    case 4:
+                    case 5:
                         //右下
                         restObj.SetActive(false);
                         leftUpObj.SetActive(false);
@@ -130,7 +130,7 @@ public class TrainingManager : MonoBehaviour
                 leftUpObj.SetActive(false);
                 rightUpObj.SetActive(false);
                 if(!isSend){
-                    udpSender.SendMessages(stimulateText[testOrder[trainingCount]] + "刺激開始");
+                    udpSender.SendMessages(testOrder[trainingCount].ToString());
                     Debug.Log(stimulateText[testOrder[trainingCount]] + "刺激開始");
                     isSend = true;
                 }
@@ -138,35 +138,35 @@ public class TrainingManager : MonoBehaviour
                 if(elapsedTime > restTime + instituteTime + signTime + preTrainingTime){
                     switch (testOrder[trainingCount])
                     {
-                        case 0:
+                        case 1:
                             //安静
                             armController.SetIsLeft(false);
                             armController.SetIsRight(false);
                             armController.SetIsLeftDown(false);
                             armController.SetIsRightDown(false);
                             break;
-                        case 1:
+                        case 2:
                             //左上
                             armController.SetIsLeft(true);
                             armController.SetIsRight(false);
                             armController.SetIsLeftDown(false);
                             armController.SetIsRightDown(false);
                             break;
-                        case 2:
+                        case 3:
                             //右上
                             armController.SetIsLeft(false);
                             armController.SetIsRight(true);
                             armController.SetIsLeftDown(false);
                             armController.SetIsRightDown(false);
                             break;
-                        case 3:
+                        case 4:
                             //左下
                             armController.SetIsLeft(false);
                             armController.SetIsRight(false);
                             armController.SetIsLeftDown(true);
                             armController.SetIsRightDown(false);
                             break;
-                        case 4:
+                        case 5:
                             //右下
                             armController.SetIsLeft(false);
                             armController.SetIsRight(false);

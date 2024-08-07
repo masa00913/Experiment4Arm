@@ -16,19 +16,19 @@ public class UdpSender : MonoBehaviour
 
     void Update()
     {
-        // スペースキーが押されたらメッセージを送信
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SendMessages("Hello, UDP!");
-        }else if(Input.GetKeyDown(KeyCode.Alpha1)){
-            SendMessages("1");
-        }else if(Input.GetKeyDown(KeyCode.Alpha2)){
-            SendMessages("2");
-        }else if(Input.GetKeyDown(KeyCode.Alpha3)){
-            SendMessages("3");
-        }else if(Input.GetKeyDown(KeyCode.Alpha4)){
-            SendMessages("4");
-        }
+        // // スペースキーが押されたらメッセージを送信
+        // if (Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     SendMessages("Hello, UDP!");
+        // }else if(Input.GetKeyDown(KeyCode.Alpha1)){
+        //     SendMessages("1");
+        // }else if(Input.GetKeyDown(KeyCode.Alpha2)){
+        //     SendMessages("2");
+        // }else if(Input.GetKeyDown(KeyCode.Alpha3)){
+        //     SendMessages("3");
+        // }else if(Input.GetKeyDown(KeyCode.Alpha4)){
+        //     SendMessages("4");
+        // }
     }
 
     public void SendMessages(string message)
