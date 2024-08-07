@@ -10,6 +10,10 @@ public class ArmController : MonoBehaviour
     private int leftDownArmState;
     private int rightDownArmState;
     private bool isReset;
+    private bool isResetLeftUp;
+    private bool isResetRightUp;
+    private bool isResetLeftDown;
+    private bool isResetRightDown;
     private bool isLeft;
     private bool isRight;
     private bool isLeftDown;
@@ -37,7 +41,18 @@ public class ArmController : MonoBehaviour
         leftArmState++;
         if(leftArmState > 2){
             leftArmState = 2;
-        }   
+            
+        }
+
+        if(rightArmState == 2){
+            rightArmState = 0;
+        }
+        if(leftDownArmState == 2){
+            leftDownArmState = 0;
+        }
+        if(rightDownArmState == 2){
+            rightDownArmState = 0;
+        }
     }
 
     public void RightArmNext(){
@@ -45,13 +60,34 @@ public class ArmController : MonoBehaviour
         if(rightArmState > 2){
             rightArmState = 2;
         }
+
+        if(leftArmState == 2){
+            leftArmState = 0;
+        }
+
+        if(leftDownArmState == 2){
+            leftDownArmState = 0;
+        }
+        if(rightDownArmState == 2){
+            rightDownArmState = 0;
+        }
     }
 
     public void LeftDownArmNext(){
         leftDownArmState++;
         if(leftDownArmState > 2){
             leftDownArmState = 2;
-        }   
+        }
+        if(leftArmState == 2){
+            leftArmState = 0;
+        }
+
+        if(rightArmState == 2){
+            rightArmState = 0;
+        }
+        if(rightDownArmState == 2){
+            rightDownArmState = 0;
+        }
     }
 
     public void RightDownArmNext(){
@@ -59,21 +95,86 @@ public class ArmController : MonoBehaviour
         if(rightDownArmState > 2){
             rightDownArmState = 2;
         }
+
+        if(leftArmState == 2){
+            leftArmState = 0;
+        }
+
+        if(rightArmState == 2){
+            rightArmState = 0;
+        }
+        if(leftDownArmState == 2){
+            leftDownArmState = 0;
+        }
     }
 
     public void ResetArmPos(){
-        isReset = true;
         leftArmState = 0;
         rightArmState = 0;
         leftDownArmState = 0;
         rightDownArmState = 0;
-        animator.SetBool("isReset",isReset);
+        isResetLeftDown = true;
+        isResetRightDown = true;
+        isResetLeftUp = true;
+        isResetRightUp = true;
+        animator.SetBool("isResetLeftDown", isResetLeftDown);
+        animator.SetBool("isResetLeftUp", isResetLeftUp);
+        animator.SetBool("isResetRightDown", isResetRightDown);
+        animator.SetBool("isResetRightUp", isResetRightUp);
     }
 
     public void SetIsReset(bool isReset){
         this.isReset = isReset;
-        animator.SetBool("isReset",isReset);
+        isResetLeftDown = isReset;
+        isResetRightDown = isReset;
+        isResetLeftUp = isReset;
+        isResetRightUp = isReset;
+        animator.SetBool("isResetLeftDown", isResetLeftDown);
+        animator.SetBool("isResetLeftUp", isResetLeftUp);
+        animator.SetBool("isResetRightDown", isResetRightDown);
+        animator.SetBool("isResetRightUp", isResetRightUp);
     }
+
+    public void SetIsResetLeftUp(bool isResetLeftUp){
+        this.isResetLeftUp = isResetLeftUp;
+        animator.SetBool("isResetLeftUp",isResetLeftUp);
+    }
+    public void SetIsResetLeftDown(bool isResetLeftDown){
+        this.isResetLeftDown = isResetLeftDown;
+        animator.SetBool("isResetLeftDown",isResetLeftDown);
+    }
+    public void SetIsResetRightUp(bool isResetRightUp){
+        this.isResetRightUp = isResetRightUp;
+        animator.SetBool("isResetRightUp",isResetRightUp);
+    }
+    public void SetIsResetRightDown(bool isResetRightDown){
+        this.isResetRightDown = isResetRightDown;
+        animator.SetBool("isResetRightDown",isResetRightDown);
+    }
+    
+
+    public void ResetLeftArmUp(){
+        leftArmState = 0;
+        isResetLeftUp = true;
+        animator.SetBool("isResetLeftUp", isResetLeftUp);
+    }
+    public void ResetLeftArmDown(){
+        leftDownArmState = 0;
+        isResetLeftDown = true;
+        animator.SetBool("isResetLeftDown", isResetLeftDown);
+    }
+
+    public void ResetRightArmUp(){
+        rightArmState = 0;
+        isResetRightUp = true;
+        animator.SetBool("isResetRightUp", isResetRightUp);
+    }
+    public void ResetRightArmDown(){
+        rightDownArmState = 0;
+        isResetRightDown = true;
+        animator.SetBool("isResetRightDown", isResetRightDown);
+    }
+
 
     public void SetIsLeft(bool isLeft){
         this.isLeft = isLeft; 

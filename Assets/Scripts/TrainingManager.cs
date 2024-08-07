@@ -26,8 +26,6 @@ public class TrainingManager : MonoBehaviour
     [SerializeField]private UdpSender udpSender;
 
     private bool isSend;
-
-    private string[] stimulateText = {"安静","左上","右上","左下","右下"};
     
     
     // Start is called before the first frame update

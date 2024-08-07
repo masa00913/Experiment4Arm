@@ -20,17 +20,22 @@ public class ExperimentManager : MonoBehaviour
     [SerializeField]private GameObject rightTipObj;
     [SerializeField]private GameObject leftDownTipObj;
     [SerializeField]private GameObject rightDownTipObj;
-    [Header("タスクの順番 1:左上 2:右上, 3:左下 4:右下")]private int[] taskOrder = {1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4};
+    [Header("タスクの順番 2:左上 3:右上, 4:左下 5:右下")]private int[] taskOrder = {2,3,4,5,2,3,4,5,2,3,4,5,2,3,4,5,2,3,4,5};
     [Header("現在のタスク番号")]private int currentTaskNum;
     [SerializeField]private ArmController armController;
 
-    private float startTime;
-    private float intervalTime = 1f;
-    private float armStayTime = 0.25f;
-    private float taskStartTime;
-    private float taskEndTime;
-    private bool isStart;
-    private bool isTask;
+    [Header("タスクの総開始時間")]private float startTime;
+    [Header("タスクのインターバル時間")]private float intervalTime = 1f;
+    [Header("腕が目標地点にとどまる時間")]private float armStayTime = 0.25f;
+    [Header("タスクが始まった時間")]private float taskStartTime;
+    [Header("タスクが終わった時間")]private float taskEndTime;
+
+    [Header("タスクをあきらめる時間")]private float taskGiveUpTime = 15f;
+    [Header("タスクをギブアップしたか")]private bool isGiveUp;
+
+
+    [Header("スタートしたか")]private bool isStart;
+    [Header("タスク中かどうか")]private bool isTask;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +58,6 @@ public class ExperimentManager : MonoBehaviour
             //最初の処理
             startTime = Time.time;
             taskStartTime = Time.time;
-            //armController.ResetArmPos();
             Debug.Log("＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝実験開始＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝");
             isStart = true;
             isTask = true;
@@ -61,7 +65,6 @@ public class ExperimentManager : MonoBehaviour
 
         if(!isTask && Time.time - taskEndTime > armStayTime){
             //腕を戻すタイミング
-            Debug.Log("腕を戻す");
             armController.ResetArmPos();
         }
 
@@ -84,63 +87,82 @@ public class ExperimentManager : MonoBehaviour
             leftCircle.SetActive(false);
             rightDownCircle.SetActive(false);
             leftDownCircle.SetActive(false);
+
+            var taskTime = Time.time - taskStartTime; 
+            if(taskTime >= taskGiveUpTime){
+                isGiveUp = true;
+            }
+
             switch (taskOrder[currentTaskNum])
             {
-                case 1:
+                case 2:
                     //左上
                     leftCircle.SetActive(true);
                     if(leftTipObj.transform.position.z >= leftCircleSprite.transform.position.z){
-                        Debug.Log("左のタスク完了");
+                        Debug.Log("左上のタスク完了");
                         isClearTask = true;
                         leftCircleSprite.color = Color.red;
 
                         string[] rowDataTemp = new string[3];
-                        rowDataTemp[0] = "左";
-                        rowDataTemp[1] = (currentTaskNum + 1) + "回目";
-                        rowDataTemp[2] = (Time.time - taskStartTime).ToString();
-                        rowData.Add(rowDataTemp);
-                    }
-                    break;
-                case 2:
-                    //右上
-                    rightCircle.SetActive(true);
-                    if(rightTipObj.transform.position.z >= rightCircleSprite.transform.position.z){
-                        Debug.Log("右のタスク完了");
-                        isClearTask = true;
-                        rightCircleSprite.color = Color.red;
-
-                        string[] rowDataTemp = new string[3];
-                        rowDataTemp[0] = "右";
+                        rowDataTemp[0] = "左上";
+                        if(isGiveUp){
+                            rowDataTemp[0] = "ギブアップ左上";
+                        }
                         rowDataTemp[1] = (currentTaskNum + 1) + "回目";
                         rowDataTemp[2] = (Time.time - taskStartTime).ToString();
                         rowData.Add(rowDataTemp);
                     }
                     break;
                 case 3:
-                    //左下
-                    leftDownCircle.SetActive(true);
-                    if(leftDownTipObj.transform.position.z >= leftDownCircleSprite.transform.position.z){
-                        Debug.Log("左のタスク完了");
+                    //右上
+                    rightCircle.SetActive(true);
+                    if(rightTipObj.transform.position.z >= rightCircleSprite.transform.position.z){
+                        Debug.Log("右上のタスク完了");
                         isClearTask = true;
-                        leftDownCircleSprite.color = Color.red;
+                        rightCircleSprite.color = Color.red;
 
                         string[] rowDataTemp = new string[3];
-                        rowDataTemp[0] = "左";
+                        rowDataTemp[0] = "右上";
+                        if(isGiveUp){
+                            rowDataTemp[0] = "ギブアップ右上";
+                        }
                         rowDataTemp[1] = (currentTaskNum + 1) + "回目";
                         rowDataTemp[2] = (Time.time - taskStartTime).ToString();
                         rowData.Add(rowDataTemp);
                     }
                     break;
                 case 4:
+                    //左下
+                    leftDownCircle.SetActive(true);
+                    if(leftDownTipObj.transform.position.z >= leftDownCircleSprite.transform.position.z){
+                        Debug.Log("左下のタスク完了");
+                        isClearTask = true;
+                        leftDownCircleSprite.color = Color.red;
+
+                        string[] rowDataTemp = new string[3];
+                        rowDataTemp[0] = "左下";
+                        if(isGiveUp){
+                            rowDataTemp[0] = "ギブアップ左下";
+                        }
+                        rowDataTemp[1] = (currentTaskNum + 1) + "回目";
+                        rowDataTemp[2] = (Time.time - taskStartTime).ToString();
+                        rowData.Add(rowDataTemp);
+                    }
+                    break;
+                case 5:
                     //右下
                     rightDownCircle.SetActive(true);
                     if(rightDownTipObj.transform.position.z >= rightDownCircleSprite.transform.position.z){
-                        Debug.Log("右のタスク完了");
+                        Debug.Log("右下のタスク完了");
                         isClearTask = true;
                         rightDownCircleSprite.color = Color.red;
 
                         string[] rowDataTemp = new string[3];
-                        rowDataTemp[0] = "右";
+                        
+                        rowDataTemp[0] = "右下";
+                        if(isGiveUp){
+                            rowDataTemp[0] = "ギブアップ右下";
+                        }
                         rowDataTemp[1] = (currentTaskNum + 1) + "回目";
                         rowDataTemp[2] = (Time.time - taskStartTime).ToString();
                         rowData.Add(rowDataTemp);
@@ -150,12 +172,14 @@ public class ExperimentManager : MonoBehaviour
                     break;
             }
 
+            
+
             if(isClearTask){
                 //タスク終了時の処理
                 taskEndTime = Time.time;
-
-                var taskTime = Time.time - taskStartTime;
+                
                 Debug.Log((currentTaskNum + 1) + "回目：タスクにかかった時間 " + taskTime);
+                isGiveUp = false;
                 isTask = false;
                 SaveToCSV();
                 if(currentTaskNum >= taskOrder.Length-1){
@@ -201,5 +225,17 @@ public class ExperimentManager : MonoBehaviour
 
     public bool GetIsTask(){
         return isTask;
+    }
+
+    public bool GetIsGiveUp(){
+        return isGiveUp;
+    }
+
+    public void SetIsGiveUp(bool isGiveUp){
+        this.isGiveUp = isGiveUp;
+    }
+
+    public int GetCurrentTaskNum(){
+        return taskOrder[currentTaskNum];
     }
 }

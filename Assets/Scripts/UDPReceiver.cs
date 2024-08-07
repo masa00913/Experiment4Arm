@@ -34,40 +34,60 @@ public class UdpReceiver : MonoBehaviour
             {
                 // データを受信
                 byte[] data = udpClient.Receive(ref remoteEndPoint);
-                // for(int i=0; i<data.Length; i++){
-                //     Debug.Log(data[i] + " : " + i + "番目");
-                // }
-                // // バイト配列を文字列に変換
-                // string message = Encoding.UTF8.GetString(data);
-                // Debug.Log("Message received: " + message);
-                // char[] messageChar = Encoding.UTF8.GetChars(data);
-                // Debug.Log("Message Char" + messageChar[0]);
                 int message = data[0];
                 if(experimentManager.GetIsTask()){
-                    switch (message)
-                    {
-                        case 1:
-                            Debug.Log("安静");
-                            break;
-                        case 2:
-                            Debug.Log("左上手");
-                            armController.LeftArmNext();
-                            break;
-                        case 3:
-                            Debug.Log("右上手");
-                            armController.RightArmNext();
-                            break;
-                        case 4:
-                            Debug.Log("左下手");
-                            armController.LeftDownArmNext();
-                            break;
-                        case 5:
-                            Debug.Log("右下手");
-                            armController.RightDownArmNext();
-                            break;
-                        default:
-                            Debug.Log("例外を検出");
-                            break;
+                    if(!experimentManager.GetIsGiveUp()){
+                        switch (message)
+                        {
+                            case 1:
+                                Debug.Log("安静");
+                                break;
+                            case 2:
+                                Debug.Log("左上手");
+                                armController.LeftArmNext();
+                                break;
+                            case 3:
+                                Debug.Log("右上手");
+                                armController.RightArmNext();
+                                break;
+                            case 4:
+                                Debug.Log("左下手");
+                                armController.LeftDownArmNext();
+                                break;
+                            case 5:
+                                Debug.Log("右下手");
+                                armController.RightDownArmNext();
+                                break;
+                            default:
+                                Debug.Log("例外を検出");
+                                break;
+                        }
+                    }else{
+                        switch (experimentManager.GetCurrentTaskNum())
+                        {
+                           case 1:
+                                Debug.Log("ギブアップ安静");
+                                break;
+                            case 2:
+                                Debug.Log("ギブアップ左上手");
+                                armController.LeftArmNext();
+                                break;
+                            case 3:
+                                Debug.Log("ギブアップ右上手");
+                                armController.RightArmNext();
+                                break;
+                            case 4:
+                                Debug.Log("ギブアップ左下手");
+                                armController.LeftDownArmNext();
+                                break;
+                            case 5:
+                                Debug.Log("ギブアップ右下手");
+                                armController.RightDownArmNext();
+                                break;
+                            default:
+                                Debug.Log("例外を検出");
+                                break;
+                        }
                     }
                 }else{
                     Debug.Log("タスク中ではありません");
