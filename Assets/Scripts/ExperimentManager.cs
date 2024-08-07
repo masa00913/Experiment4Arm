@@ -10,11 +10,17 @@ public class ExperimentManager : MonoBehaviour
     [Header("保存する中身")]private List<string[]> rowData = new List<string[]>();
     [SerializeField]private GameObject leftCircle;
     [SerializeField]private GameObject rightCircle;
+    [SerializeField]private GameObject leftDownCircle;
+    [SerializeField]private GameObject rightDownCircle;
     private SpriteRenderer leftCircleSprite;
     private SpriteRenderer rightCircleSprite;
+    private SpriteRenderer leftDownCircleSprite;
+    private SpriteRenderer rightDownCircleSprite;
     [SerializeField]private GameObject leftTipObj;
     [SerializeField]private GameObject rightTipObj;
-    [Header("タスクの順番 1:左 2:右")]private int[] taskOrder = {1,2,1,2,1,2,1,2,1,2};
+    [SerializeField]private GameObject leftDownTipObj;
+    [SerializeField]private GameObject rightDownTipObj;
+    [Header("タスクの順番 1:左 2:右")]private int[] taskOrder = {1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4};
     [Header("現在のタスク番号")]private int currentTaskNum;
     [SerializeField]private ArmController armController;
 
@@ -31,6 +37,8 @@ public class ExperimentManager : MonoBehaviour
     {
         leftCircleSprite = leftCircle.GetComponent<SpriteRenderer>();
         rightCircleSprite = rightCircle.GetComponent<SpriteRenderer>();
+        leftDownCircleSprite = leftDownCircle.GetComponent<SpriteRenderer>();
+        rightDownCircleSprite = rightDownCircle.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -66,38 +74,80 @@ public class ExperimentManager : MonoBehaviour
             armController.SetIsReset(false);
             leftCircleSprite.color = Color.green;
             rightCircleSprite.color = Color.green;
+            leftDownCircleSprite.color = Color.green;
+            rightDownCircleSprite.color = Color.green;
         }
 
         if(isTask){
             bool isClearTask = false;
-            if(taskOrder[currentTaskNum] == 1){
-                rightCircle.SetActive(false);
-                leftCircle.SetActive(true);
-                if(leftTipObj.transform.position.z >= leftCircleSprite.transform.position.z){
-                    Debug.Log("左のタスク完了");
-                    isClearTask = true;
-                    leftCircleSprite.color = Color.red;
+            rightCircle.SetActive(false);
+            leftCircle.SetActive(false);
+            rightDownCircle.SetActive(false);
+            leftDownCircle.SetActive(false);
+            switch (taskOrder[currentTaskNum])
+            {
+                case 1:
+                    //左上
+                    leftCircle.SetActive(true);
+                    if(leftTipObj.transform.position.z >= leftCircleSprite.transform.position.z){
+                        Debug.Log("左のタスク完了");
+                        isClearTask = true;
+                        leftCircleSprite.color = Color.red;
 
-                    string[] rowDataTemp = new string[3];
-                    rowDataTemp[0] = "左";
-                    rowDataTemp[1] = (currentTaskNum + 1) + "回目";
-                    rowDataTemp[2] = (Time.time - taskStartTime).ToString();
-                    rowData.Add(rowDataTemp);
-                }
-            }else if(taskOrder[currentTaskNum] == 2){
-                rightCircle.SetActive(true);
-                leftCircle.SetActive(false);
-                if(rightTipObj.transform.position.z >= rightCircleSprite.transform.position.z){
-                    Debug.Log("右のタスク完了");
-                    isClearTask = true;
-                    rightCircleSprite.color = Color.red;
+                        string[] rowDataTemp = new string[3];
+                        rowDataTemp[0] = "左";
+                        rowDataTemp[1] = (currentTaskNum + 1) + "回目";
+                        rowDataTemp[2] = (Time.time - taskStartTime).ToString();
+                        rowData.Add(rowDataTemp);
+                    }
+                    break;
+                case 2:
+                    //右上
+                    rightCircle.SetActive(true);
+                    if(rightTipObj.transform.position.z >= rightCircleSprite.transform.position.z){
+                        Debug.Log("右のタスク完了");
+                        isClearTask = true;
+                        rightCircleSprite.color = Color.red;
 
-                    string[] rowDataTemp = new string[3];
-                    rowDataTemp[0] = "右";
-                    rowDataTemp[1] = (currentTaskNum + 1) + "回目";
-                    rowDataTemp[2] = (Time.time - taskStartTime).ToString();
-                    rowData.Add(rowDataTemp);
-                }
+                        string[] rowDataTemp = new string[3];
+                        rowDataTemp[0] = "右";
+                        rowDataTemp[1] = (currentTaskNum + 1) + "回目";
+                        rowDataTemp[2] = (Time.time - taskStartTime).ToString();
+                        rowData.Add(rowDataTemp);
+                    }
+                    break;
+                case 3:
+                    //左下
+                    leftDownCircle.SetActive(true);
+                    if(leftDownTipObj.transform.position.z >= leftDownCircleSprite.transform.position.z){
+                        Debug.Log("左のタスク完了");
+                        isClearTask = true;
+                        leftDownCircleSprite.color = Color.red;
+
+                        string[] rowDataTemp = new string[3];
+                        rowDataTemp[0] = "左";
+                        rowDataTemp[1] = (currentTaskNum + 1) + "回目";
+                        rowDataTemp[2] = (Time.time - taskStartTime).ToString();
+                        rowData.Add(rowDataTemp);
+                    }
+                    break;
+                case 4:
+                    //右下
+                    rightDownCircle.SetActive(true);
+                    if(rightDownTipObj.transform.position.z >= rightDownCircleSprite.transform.position.z){
+                        Debug.Log("右のタスク完了");
+                        isClearTask = true;
+                        rightDownCircleSprite.color = Color.red;
+
+                        string[] rowDataTemp = new string[3];
+                        rowDataTemp[0] = "右";
+                        rowDataTemp[1] = (currentTaskNum + 1) + "回目";
+                        rowDataTemp[2] = (Time.time - taskStartTime).ToString();
+                        rowData.Add(rowDataTemp);
+                    }
+                    break;
+                default:
+                    break;
             }
 
             if(isClearTask){

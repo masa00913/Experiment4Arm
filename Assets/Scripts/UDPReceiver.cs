@@ -40,16 +40,24 @@ public class UdpReceiver : MonoBehaviour
                 if(experimentManager.GetIsTask()){
                     switch (message)
                     {
+                        case "0":
+                            Debug.Log("安静");
+                            break;
                         case "1":
-                            Debug.Log("左手");
+                            Debug.Log("左上手");
                             armController.LeftArmNext();
                             break;
                         case "2":
-                            Debug.Log("右手");
+                            Debug.Log("右上手");
                             armController.RightArmNext();
                             break;
                         case "3":
-                            Debug.Log("安静");
+                            Debug.Log("左下手");
+                            armController.LeftDownArmNext();
+                            break;
+                        case "4":
+                            Debug.Log("右下手");
+                            armController.RightDownArmNext();
                             break;
                         default:
                             Debug.Log("例外を検出");

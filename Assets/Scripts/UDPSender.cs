@@ -24,6 +24,10 @@ public class UdpSender : MonoBehaviour
             SendMessages("1");
         }else if(Input.GetKeyDown(KeyCode.Alpha2)){
             SendMessages("2");
+        }else if(Input.GetKeyDown(KeyCode.Alpha3)){
+            SendMessages("3");
+        }else if(Input.GetKeyDown(KeyCode.Alpha4)){
+            SendMessages("4");
         }
     }
 
