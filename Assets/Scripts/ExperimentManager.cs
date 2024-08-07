@@ -157,7 +157,7 @@ public class ExperimentManager : MonoBehaviour
                 var taskTime = Time.time - taskStartTime;
                 Debug.Log((currentTaskNum + 1) + "回目：タスクにかかった時間 " + taskTime);
                 isTask = false;
-                
+                SaveToCSV();
                 if(currentTaskNum >= taskOrder.Length-1){
                     Debug.Log("タスク終了");
                     var allTaskTime = Time.time - startTime;

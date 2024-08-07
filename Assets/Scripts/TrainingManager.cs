@@ -131,7 +131,7 @@ public class TrainingManager : MonoBehaviour
                 rightUpObj.SetActive(false);
                 if(!isSend){
                     udpSender.SendMessages(testOrder[trainingCount].ToString());
-                    Debug.Log(stimulateText[testOrder[trainingCount]] + "刺激開始");
+                    Debug.Log(testOrder[trainingCount] + "刺激開始");
                     isSend = true;
                 }
                 armController.SetIsReset(false);
