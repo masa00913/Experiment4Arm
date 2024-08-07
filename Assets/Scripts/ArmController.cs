@@ -9,7 +9,6 @@ public class ArmController : MonoBehaviour
     private int rightArmState;
     private int leftDownArmState;
     private int rightDownArmState;
-    private bool isReset;
     private bool isResetLeftUp;
     private bool isResetRightUp;
     private bool isResetLeftDown;
@@ -47,6 +46,25 @@ public class ArmController : MonoBehaviour
         if(rightArmState == 2){
             rightArmState = 0;
         }
+        if(leftDownArmState == 2){
+            leftDownArmState = 0;
+        }
+        if(rightDownArmState == 2){
+            rightDownArmState = 0;
+        }
+    }
+
+    /// <summary>
+    /// 安静時の処理
+    /// </summary>
+    public void ArmStay(){
+        if(leftArmState == 2){
+            leftArmState = 0;
+        }
+        if(rightArmState == 2){
+            rightArmState = 0;
+        }
+
         if(leftDownArmState == 2){
             leftDownArmState = 0;
         }
@@ -113,44 +131,8 @@ public class ArmController : MonoBehaviour
         rightArmState = 0;
         leftDownArmState = 0;
         rightDownArmState = 0;
-        isResetLeftDown = true;
-        isResetRightDown = true;
-        isResetLeftUp = true;
-        isResetRightUp = true;
-        animator.SetBool("isResetLeftDown", isResetLeftDown);
-        animator.SetBool("isResetLeftUp", isResetLeftUp);
-        animator.SetBool("isResetRightDown", isResetRightDown);
-        animator.SetBool("isResetRightUp", isResetRightUp);
     }
 
-    public void SetIsReset(bool isReset){
-        this.isReset = isReset;
-        isResetLeftDown = isReset;
-        isResetRightDown = isReset;
-        isResetLeftUp = isReset;
-        isResetRightUp = isReset;
-        animator.SetBool("isResetLeftDown", isResetLeftDown);
-        animator.SetBool("isResetLeftUp", isResetLeftUp);
-        animator.SetBool("isResetRightDown", isResetRightDown);
-        animator.SetBool("isResetRightUp", isResetRightUp);
-    }
-
-    public void SetIsResetLeftUp(bool isResetLeftUp){
-        this.isResetLeftUp = isResetLeftUp;
-        animator.SetBool("isResetLeftUp",isResetLeftUp);
-    }
-    public void SetIsResetLeftDown(bool isResetLeftDown){
-        this.isResetLeftDown = isResetLeftDown;
-        animator.SetBool("isResetLeftDown",isResetLeftDown);
-    }
-    public void SetIsResetRightUp(bool isResetRightUp){
-        this.isResetRightUp = isResetRightUp;
-        animator.SetBool("isResetRightUp",isResetRightUp);
-    }
-    public void SetIsResetRightDown(bool isResetRightDown){
-        this.isResetRightDown = isResetRightDown;
-        animator.SetBool("isResetRightDown",isResetRightDown);
-    }
     
 
     public void ResetLeftArmUp(){
@@ -177,17 +159,21 @@ public class ArmController : MonoBehaviour
 
 
     public void SetIsLeft(bool isLeft){
-        this.isLeft = isLeft; 
+        this.isLeft = isLeft;
+        leftArmState = 2;
     }
 
     public void SetIsRight(bool isRight){
         this.isRight = isRight;
+        rightArmState = 2;
     }
     public void SetIsLeftDown(bool isLeftDown){
         this.isLeftDown = isLeftDown; 
+        leftDownArmState = 2;
     }
 
     public void SetIsRightDown(bool isRightDown){
         this.isRightDown = isRightDown;
+        rightDownArmState = 2;
     }
 }

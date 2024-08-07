@@ -41,6 +41,7 @@ public class UdpReceiver : MonoBehaviour
                         {
                             case 1:
                                 Debug.Log("安静");
+                                armController.ArmStay();
                                 break;
                             case 2:
                                 Debug.Log("左上手");
@@ -67,6 +68,7 @@ public class UdpReceiver : MonoBehaviour
                         {
                            case 1:
                                 Debug.Log("ギブアップ安静");
+                                armController.ArmStay();
                                 break;
                             case 2:
                                 Debug.Log("ギブアップ左上手");

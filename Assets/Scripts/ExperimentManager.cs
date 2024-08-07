@@ -74,7 +74,6 @@ public class ExperimentManager : MonoBehaviour
             currentTaskNum++;
             taskStartTime = Time.time;
             isTask = true;
-            armController.SetIsReset(false);
             leftCircleSprite.color = Color.green;
             rightCircleSprite.color = Color.green;
             leftDownCircleSprite.color = Color.green;

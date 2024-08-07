@@ -58,7 +58,7 @@ public class TrainingManager : MonoBehaviour
                 armController.SetIsRight(false);
                 armController.SetIsLeftDown(false);
                 armController.SetIsRightDown(false);
-                armController.SetIsReset(true);
+                armController.ResetArmPos();
             }else if(elapsedTime < restTime + instituteTime){
                 //指示時間
                 trainingCanvas.SetActive(true);
@@ -132,7 +132,6 @@ public class TrainingManager : MonoBehaviour
                     Debug.Log(testOrder[trainingCount] + "刺激開始");
                     isSend = true;
                 }
-                armController.SetIsReset(false);
                 if(elapsedTime > restTime + instituteTime + signTime + preTrainingTime){
                     switch (testOrder[trainingCount])
                     {
