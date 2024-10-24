@@ -7,6 +7,7 @@ public class ExperimentManager : MonoBehaviour
 {
     [Header("実験を開始するか")][SerializeField]private bool isExperiment;
     [Header("保存するCSVの名前")][SerializeField]private string csvName;
+    [SerializeField]private bool isTwo;
     [Header("保存する中身")]private List<string[]> rowData = new List<string[]>();
     [SerializeField]private GameObject leftCircle;
     [SerializeField]private GameObject rightCircle;
@@ -62,6 +63,8 @@ public class ExperimentManager : MonoBehaviour
             isStart = true;
             isTask = true;
         }
+
+
 
         if(!isTask && Time.time - taskEndTime > armStayTime){
             //腕を戻すタイミング
@@ -198,7 +201,10 @@ public class ExperimentManager : MonoBehaviour
                     Debug.Log("CSVに保存完了");
                 }
             }
+            
         }
+
+        
     }
 
     public void SaveToCSV()
