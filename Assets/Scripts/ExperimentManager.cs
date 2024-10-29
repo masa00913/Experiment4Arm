@@ -8,6 +8,7 @@ public class ExperimentManager : MonoBehaviour
     [Header("実験を開始するか")][SerializeField]private bool isExperiment;
     [Header("保存するCSVの名前")][SerializeField]private string csvName;
     [SerializeField]private bool isTwo;
+    [SerializeField]private bool isRand;
     [Header("保存する中身")]private List<string[]> rowData = new List<string[]>();
     [SerializeField]private GameObject leftCircle;
     [SerializeField]private GameObject rightCircle;
@@ -22,6 +23,7 @@ public class ExperimentManager : MonoBehaviour
     [SerializeField]private GameObject leftDownTipObj;
     [SerializeField]private GameObject rightDownTipObj;
     [Header("タスクの順番 2:左上 3:右上, 4:左下 5:右下")]private int[] taskOrder = {2,3,4,5,2,3,4,5,2,3,4,5,2,3,4,5,2,3,4,5};
+    [Header("タスクの順番 2:左上 3:右上, 4:左下 5:右下")]private int[] taskRandOrder = {3,4,2,5,4,2,3,5,3,4,2,5,3,4,5,2,4,5,3,2};
     [Header("現在のタスク番号")]private int currentTaskNum;
     [SerializeField]private ArmController armController;
 
@@ -45,6 +47,10 @@ public class ExperimentManager : MonoBehaviour
         rightCircleSprite = rightCircle.GetComponent<SpriteRenderer>();
         leftDownCircleSprite = leftDownCircle.GetComponent<SpriteRenderer>();
         rightDownCircleSprite = rightDownCircle.GetComponent<SpriteRenderer>();
+
+        if(isRand){
+            taskOrder = taskRandOrder;
+        }
     }
 
     // Update is called once per frame

@@ -15,7 +15,7 @@ public class TrainingManager : MonoBehaviour
     [Header("指示の時間")]private float instituteTime = 1;
     [Header("合図の時間")]private float signTime = 1;
     [Header("練習前の少しの時間")]private float preTrainingTime = 0f;
-    [Header("練習時間")]private float trainingTime = 3f;
+    [Header("練習時間")]private float trainingTime = 2f;
     private int trainingCount;
     [SerializeField]private GameObject trainingCanvas;
     [SerializeField]private GameObject crossObj;
