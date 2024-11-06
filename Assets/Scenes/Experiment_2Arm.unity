@@ -950,12 +950,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftArmTarget: {fileID: 566377111}
   rightArmTarget: {fileID: 1705529123}
+  leftForeArmTarget: {fileID: 0}
+  rightForeArmTarget: {fileID: 0}
   leftArmPos: {x: -0.15, y: 1.2, z: 0.44}
   rightArmPos: {x: 0.15, y: 1.2, z: 0.44}
   leftArmRot: {x: 0, y: 90, z: 90}
   rightArmRot: {x: 0, y: -90, z: -90}
   OVRleftHand: {fileID: 575221988}
   OVRrightHand: {fileID: 917474052}
+  l_angle_bone_forearm: {x: 0, y: 0, z: 0}
   l_angle_bone_hand: {x: 180, y: 5, z: 90}
   l_angle_bone_Thumb3: {x: -90, y: 90, z: 0}
   l_angle_bone_Thumb2: {x: -90, y: 90, z: 0}
@@ -964,16 +967,17 @@ MonoBehaviour:
   l_angle_bone_Index3: {x: -90, y: 90, z: 0}
   l_angle_bone_Index2: {x: -90, y: 90, z: 0}
   l_angle_bone_Index1: {x: -90, y: 90, z: 0}
-  l_angle_bone_Middle3: {x: -80, y: 50, z: 35}
-  l_angle_bone_Middle2: {x: -80, y: 94, z: 45}
-  l_angle_bone_Middle1: {x: -80, y: 98, z: 35}
-  l_angle_bone_Ring3: {x: -87, y: 94, z: 1}
-  l_angle_bone_Ring2: {x: -87, y: 94, z: -8}
-  l_angle_bone_Ring1: {x: -80, y: 98, z: 1}
+  l_angle_bone_Middle3: {x: -90, y: 90, z: 0}
+  l_angle_bone_Middle2: {x: -90, y: 90, z: 0}
+  l_angle_bone_Middle1: {x: -90, y: 90, z: 0}
+  l_angle_bone_Ring3: {x: -90, y: 90, z: 0}
+  l_angle_bone_Ring2: {x: -90, y: 90, z: 0}
+  l_angle_bone_Ring1: {x: -90, y: 90, z: 0}
   l_angle_bone_Pinky3: {x: -90, y: 90, z: 0}
-  l_angle_bone_Pinky2: {x: -90, y: 90, z: -9}
-  l_angle_bone_Pinky1: {x: -90, y: 90, z: -3.2}
+  l_angle_bone_Pinky2: {x: -90, y: 90, z: 0}
+  l_angle_bone_Pinky1: {x: -90, y: 90, z: 0}
   l_angle_bone_Pinky0: {x: -90, y: 90, z: 0}
+  r_angle_bone_forearm: {x: 0, y: 0, z: 0}
   r_angle_bone_hand: {x: 0, y: 5, z: -90}
   r_angle_bone_Thumb3: {x: 90, y: 90, z: 0}
   r_angle_bone_Thumb2: {x: 90, y: 90, z: 0}

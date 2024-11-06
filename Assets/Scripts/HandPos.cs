@@ -7,6 +7,8 @@ public class HandPos : MonoBehaviour
 {
     [SerializeField]private GameObject leftArmTarget;
     [SerializeField]private GameObject rightArmTarget;
+    [SerializeField]private GameObject leftForeArmTarget;
+    [SerializeField]private GameObject rightForeArmTarget;
     [SerializeField]private Vector3 leftArmPos;
     [SerializeField]private Vector3 rightArmPos;
     [SerializeField]private Vector3 leftArmRot;
@@ -14,6 +16,7 @@ public class HandPos : MonoBehaviour
     [SerializeField]private OVRSkeleton OVRleftHand;
     [SerializeField]private OVRSkeleton OVRrightHand;
 
+    [SerializeField]private Vector3 l_angle_bone_forearm;
     [SerializeField]private Vector3 l_angle_bone_hand;
     [SerializeField]private Vector3 l_angle_bone_Thumb3;
     [SerializeField]private Vector3 l_angle_bone_Thumb2;
@@ -32,6 +35,7 @@ public class HandPos : MonoBehaviour
     [SerializeField]private Vector3 l_angle_bone_Pinky2;
     [SerializeField]private Vector3 l_angle_bone_Pinky1;
     [SerializeField]private Vector3 l_angle_bone_Pinky0;
+    [SerializeField]private Vector3 r_angle_bone_forearm;
     [SerializeField]private Vector3 r_angle_bone_hand;
     [SerializeField]private Vector3 r_angle_bone_Thumb3;
     [SerializeField]private Vector3 r_angle_bone_Thumb2;
@@ -70,6 +74,7 @@ public class HandPos : MonoBehaviour
     [SerializeField]private Transform l_hand_Pinky1;
     [SerializeField]private Transform l_hand_Pinky0;
 
+    
     [SerializeField]private Transform l_bone_hand;
     [SerializeField]private Transform l_bone_Thumb3;
     [SerializeField]private Transform l_bone_Thumb2;
@@ -140,6 +145,9 @@ public class HandPos : MonoBehaviour
 
         leftArmTarget.transform.rotation = l_bone_hand.rotation * Quaternion.Euler(l_angle_bone_hand);
         rightArmTarget.transform.rotation = r_bone_hand.rotation * Quaternion.Euler(r_angle_bone_hand);
+
+        // leftForeArmTarget.transform.rotation = l_bone_hand.rotation * Quaternion.Euler(l_angle_bone_forearm);
+        // rightForeArmTarget.transform.rotation = r_bone_hand.rotation * Quaternion.Euler(r_angle_bone_forearm);
         leftHand();
         rightHand();
     }
@@ -205,6 +213,24 @@ public class HandPos : MonoBehaviour
         l_hand_Pinky2.rotation = l_bone_Pinky2.rotation * Quaternion.Euler(l_angle_bone_Pinky2);
         l_hand_Pinky1.rotation = l_bone_Pinky1.rotation * Quaternion.Euler(l_angle_bone_Pinky1);
         l_hand_Pinky0.rotation = l_bone_Pinky0.rotation * Quaternion.Euler(l_angle_bone_Pinky0);
+
+        // l_hand_Thumb3.position = l_bone_Thumb3.position;
+        // l_hand_Thumb2.position = l_bone_Thumb2.position;
+        // l_hand_Thumb1.position = l_bone_Thumb1.position;
+        // //l_hand_Thumb0.position = l_bone_Thumb0.position;
+        // l_hand_Index3.position = l_bone_Index3.position;
+        // l_hand_Index2.position = l_bone_Index2.position;
+        // l_hand_Index1.position = l_bone_Index1.position;
+        // l_hand_Middle3.position = l_bone_Middle3.position;
+        // l_hand_Middle2.position = l_bone_Middle2.position;
+        // l_hand_Middle1.position = l_bone_Middle1.position;
+        // l_hand_Ring3.position = l_bone_Ring3.position;
+        // l_hand_Ring2.position = l_bone_Ring2.position;
+        // l_hand_Ring1.position = l_bone_Ring1.position;
+        // l_hand_Pinky3.position = l_bone_Pinky3.position;
+        // l_hand_Pinky2.position = l_bone_Pinky2.position;
+        // l_hand_Pinky1.position = l_bone_Pinky1.position;
+        // l_hand_Pinky0.position = l_bone_Pinky0.position;
 
         Debug.Log("よばれた");
     }

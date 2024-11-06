@@ -133,7 +133,7 @@ public class TrainingManager : MonoBehaviour
                     trainingCount++;
                     isSend = false;
                     Debug.Log(trainingCount + "回目終了");
-                    if(trainingCount >= testOrder.Length){
+                    if(trainingCount >= training_twoArm_order.Length){
                         isTraining = false;
                     }
                 }
