@@ -10,6 +10,7 @@ public class ExperimentManager : MonoBehaviour
     [SerializeField]private bool isTwo;
     [SerializeField]private bool isRand;
     [Header("保存する中身")]private List<string[]> rowData = new List<string[]>();
+    [Header("保存する中身")]private List<string[]> rowData_message = new List<string[]>();
     [SerializeField]private GameObject leftCircle;
     [SerializeField]private GameObject rightCircle;
     [SerializeField]private GameObject leftDownCircle;
@@ -190,6 +191,10 @@ public class ExperimentManager : MonoBehaviour
                 isGiveUp = false;
                 isTask = false;
                 SaveToCSV();
+
+                SetMessageToCSV((currentTaskNum+1)  +"回目終了");
+
+
                 if(currentTaskNum >= taskOrder.Length-1){
                     Debug.Log("タスク終了");
                     var allTaskTime = Time.time - startTime;
@@ -204,6 +209,8 @@ public class ExperimentManager : MonoBehaviour
                     rowDataTemp[1] = allTaskTime.ToString();
                     rowData.Add(rowDataTemp);
                     SaveToCSV();
+
+                    
                     Debug.Log("CSVに保存完了");
                 }
             }
@@ -248,5 +255,28 @@ public class ExperimentManager : MonoBehaviour
 
     public int GetCurrentTaskNum(){
         return taskOrder[currentTaskNum];
+    }
+
+    public void SetMessageToCSV(string message){
+        string[] rowDataTemp = new string[1];
+        rowDataTemp[0] = message;
+        rowData_message.Add(rowDataTemp);
+        // 保存するファイルパス
+        string filePath = Application.dataPath + "/CSVs/" + csvName + "_message.csv";
+
+        // ファイルストリームを作成
+        StreamWriter outStream = File.CreateText(filePath);
+
+        // 各行を書き込む
+        foreach (string[] row in rowData_message)
+        {
+            string rowString = string.Join(",", row);
+            outStream.WriteLine(rowString);
+        }
+
+        // ファイルストリームを閉じる
+        outStream.Close();
+
+        Debug.Log("CSV file saved to: " + filePath);
     }
 }

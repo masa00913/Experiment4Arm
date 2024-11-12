@@ -36,7 +36,9 @@ public class UdpReceiver : MonoBehaviour
                 byte[] data = udpClient.Receive(ref remoteEndPoint);
                 int message = data[0];
                 Debug.Log("receive:" + message);
+                
                 if(experimentManager.GetIsTask()){
+                    experimentManager.SetMessageToCSV(message.ToString());
                     if(!experimentManager.GetIsGiveUp()){
                         switch (message)
                         {
